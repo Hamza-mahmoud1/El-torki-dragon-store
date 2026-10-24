@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090d">
+<title>EL TORKI DRAGON STORE | شحن UC ببجي</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="dragon">🐉</span><span><b>EL TORKI</b><small>DRAGON STORE</small></span></a><a class="contact" href="https://wa.me/201029389947" target="_blank" rel="noopener">تواصل واتساب ↗</a></header>
+<main>
+<section class="hero"><span class="badge">⚡ متجر طلبات UC</span><h1>اشحن <em>UC ببجي</em><br>بسهولة ووضوح</h1><p>اختار باقتك، اقرأ تعليمات الشراء، واستلم كود الطلب لإرساله على واتساب.</p><div class="pills"><span>⚡ باقات متنوعة</span><span>🧾 كود طلب</span><span>💬 متابعة واتساب</span></div></section>
+<section class="notice"><b>قبل ما تطلب</b><p>الطلب لا يُعتبر مؤكدًا إلا بعد التواصل مع المتجر على واتساب والاتفاق على التفاصيل. لا ترسل كلمة مرور حسابك لأي شخص.</p></section>
+<section><div class="heading"><div><small>اختار باقتك</small><h2>كتالوج الشدات</h2></div><span>11 باقة</span></div><div id="packages"></div></section>
+<section class="steps"><div class="heading"><div><small>بسيطة وواضحة</small><h2>طريقة الطلب</h2></div></div><div class="steps-grid"><article><b>01</b><h3>اختار الباقة</h3><p>حدد كمية UC وشوف السعر ووقت الوصول المتوقع.</p></article><article><b>02</b><h3>اقرأ التعليمات</h3><p>راجع طريقة الطلب والحد اليومي قبل إنشاء الكود.</p></article><article><b>03</b><h3>ابعث الكود</h3><p>افتح واتساب برسالة جاهزة وابعثها للمتجر.</p></article></div></section>
+<footer><b>🐉 EL TORKI DRAGON STORE</b><p>متجر طلبات مستقل — لا يتم تأكيد الطلب أو الدفع آليًا.</p><a href="https://wa.me/201029389947" target="_blank" rel="noopener">واتساب المتجر: 01029389947</a><small>© <span id="year"></span> EL TORKI DRAGON STORE</small></footer>
+</main>
+<div class="backdrop" id="guide" hidden><section class="modal"><button class="close" data-close>×</button><small>اقرأ قبل المتابعة</small><h2>تعليمات الشراء</h2><ol><li>اختار الباقة وتأكد من السعر والوقت المتوقع.</li><li>مسموح بإنشاء طلب واحد يوميًا من 60 إلى 660 UC حسب قواعد المتجر.</li><li>اضغط متابعة لإنشاء كود فيه الكمية والتاريخ والوقت.</li><li>ابعث الكود إلى واتساب <b dir="ltr">01029389947</b> وانتظر تأكيد المتجر.</li><li>الوقت تقديري، والكود لا يعني أن الطلب اتأكد أو أن الشحن تم.</li><li>لا تشارك كلمة المرور أو بيانات تسجيل الدخول.</li></ol><label class="check"><input type="checkbox" id="agree"> قرأت التعليمات وفهمت طريقة الطلب.</label><button class="btn" id="continue" disabled>متابعة لإنشاء الطلب</button></section></div>
+<div class="backdrop" id="order" hidden><section class="modal"><button class="close" data-close>×</button><small>تفاصيل الطلب</small><h2>تأكيد الباقة</h2><div id="selected" class="selected"></div><label for="player">Player ID في ببجي (مطلوب)</label><input id="player" inputmode="numeric" maxlength="24" placeholder="اكتب رقم اللاعب فقط"><p class="hint">اكتب رقم اللاعب فقط، وليس كلمة المرور.</p><p id="error" class="error"></p><button class="btn" id="create">إنشاء كود الطلب</button></section></div>
+<div class="backdrop" id="result" hidden><section class="modal"><button class="close" data-close>×</button><div class="success">✓</div><small>احتفظ بالكود</small><h2>كود طلبك جاهز</h2><p class="hint">انسخ الكود أو افتح واتساب برسالة جاهزة لإرساله للمتجر.</p><div id="code" class="code" dir="ltr"></div><div id="summary" class="summary"></div><button class="btn secondary" id="copy">نسخ الكود والتفاصيل</button><a class="btn whatsapp" id="send" target="_blank" rel="noopener">إرسال الكود على واتساب ↗</a><p class="hint">رقم واتساب منفصل عن الكود: <b dir="ltr">01029389947</b></p></section></div>
+<div id="toast" class="toast" role="status"></div>
+<script src="js/script.js"></script>
+</body></html>
