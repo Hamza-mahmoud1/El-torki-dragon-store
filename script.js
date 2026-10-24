@@ -4,7 +4,7 @@ function processPurchase(selectId) {
     const todayStr = new Date().toDateString();
 
     if (lastPurchaseDate === todayStr) {
-        alert("تنبيه: لقد قمت بطلب شراء اليوم بالفعل. مسموح بإجراء عملية شراء واحدة فقط في اليوم لضمان خدمة الجميع بصورة عادلة.");
+        alert("تنبيه صارم: لقد استنفدت حصتك اليومية بالفعل! مسموح بطلب كود واحد فقط كل 24 ساعة لضمان العدالة وسرعة تسليم الطلبات.");
         return;
     }
 
@@ -28,7 +28,7 @@ function processPurchase(selectId) {
     // عرض البيانات في النافذة المنبثقة
     document.getElementById('generated-code').innerText = generatedCodeText;
     
-    // حفظ تاريخ الشراء لمنع التكرار في نفس اليوم
+    // حفظ تاريخ الشراء لقفل الحصة على العميل فوراً بمجرد ظهور النافذة
     localStorage.setItem('pubg_last_purchase_date', todayStr);
 
     // فتح النافذة المنبثقة للعميل
