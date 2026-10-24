@@ -1,319 +1,44 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Cairo', sans-serif;
+function processPurchase(selectId) {
+    // التحقق مما إذا كان العميل قد قام بعملية شراء اليوم في المتصفح الحالي
+    const lastPurchaseDate = localStorage.getItem('pubg_last_purchase_date');
+    const todayStr = new Date().toDateString();
+
+    if (lastPurchaseDate === todayStr) {
+        alert("تنبيه: لقد قمت بطلب شراء اليوم بالفعل. مسموح بإجراء عملية شراء واحدة فقط في اليوم لضمان خدمة الجميع بصورة عادلة.");
+        return;
+    }
+
+    // جلب بيانات الحزمة المختارة
+    const selectElement = document.getElementById(selectId);
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    const quantity = selectElement.value;
+    const price = selectedOption.getAttribute('data-price');
+    
+    // جلب الوقت والتاريخ الحاليين بدقة
+    const now = new Date();
+    const currentDate = now.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+    const currentTime = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+
+    // إنشاء رقم عشوائي فريد لتأكيد الطلب
+    const orderId = Math.floor(100000 + Math.random() * 900000);
+
+    // صياغة نص الكود المطلوب
+    const generatedCodeText = `ORDER-${orderId}\nالكمية المطلوبة: ${quantity} UC\nالسعر: ${price} جنيه\nالتاريخ: ${currentDate}\nالوقت: ${currentTime}`;
+
+    // عرض البيانات في النافذة المنبثقة
+    document.getElementById('generated-code').innerText = generatedCodeText;
+    
+    // حفظ تاريخ الشراء لمنع التكرار في نفس اليوم
+    localStorage.setItem('pubg_last_purchase_date', todayStr);
+
+    // فتح النافذة المنبثقة للعميل
+    openModal();
 }
 
-body {
-    background-color: #0b0e14;
-    color: #ffffff;
-    line-height: 1.6;
+function openModal() {
+    document.getElementById('modal-overlay').classList.add('active');
 }
 
-header {
-    background: linear-gradient(135deg, #1f2633 0%, #0f1319 100%);
-    border-bottom: 3px solid #ffb703;
-    padding: 30px 20px;
-    text-align: center;
-}
-
-.logo {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #ffb703;
-    text-shadow: 0 0 15px rgba(255, 183, 3, 0.4);
-    letter-spacing: 1px;
-}
-
-.tagline {
-    font-size: 1.1rem;
-    color: #a0aec0;
-    margin-top: 5px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-/* الكتالوج ودليل الاستخدام */
-.instructions-card {
-    background-color: #161c26;
-    border: 1px solid #2d3748;
-    border-radius: 12px;
-    padding: 30px;
-    margin-bottom: 5px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.instructions-card h2 {
-    color: #ffb703;
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.step {
-    background-color: #1f2633;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    border-top: 3px solid #3182ce;
-}
-
-.step-number {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-color: #3182ce;
-    color: white;
-    border-radius: 50%;
-    line-height: 35px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-.step p {
-    font-size: 0.95rem;
-    color: #e2e8f0;
-}
-
-.notice-bar {
-    background-color: rgba(229, 62, 62, 0.15);
-    border-right: 4px solid #e53e3e;
-    padding: 15px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.95rem;
-    color: #fc8181;
-    text-align: center;
-}
-
-.section-title {
-    text-align: center;
-    margin: 50px 0 30px 0;
-    font-size: 2rem;
-    color: #fff;
-    position: relative;
-}
-
-/* بطاقات الباقات */
-.packages-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.package-card {
-    background-color: #161c26;
-    border-radius: 16px;
-    padding: 35px 25px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #2d3748;
-}
-
-.package-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-}
-
-.badge {
-    position: absolute;
-    top: 15px;
-    left: -35px;
-    background-color: #ffb703;
-    color: #000;
-    font-weight: bold;
-    font-size: 0.75rem;
-    padding: 5px 40px;
-    transform: rotate(-45deg);
-}
-
-.package-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.volt h3 { color: #4fd1c5; }
-.fazzer h3 { color: #f6ad55; }
-.dragon h3 { color: #f56565; }
-
-.delivery-time {
-    font-size: 0.95rem;
-    color: #a0aec0;
-    margin-bottom: 25px;
-    font-weight: bold;
-}
-
-.options-group {
-    text-align: right;
-    margin-bottom: 30px;
-}
-
-.options-group label {
-    display: block;
-    font-size: 0.9rem;
-    color: #cbd5e0;
-    margin-bottom: 8px;
-}
-
-.uc-select {
-    width: 100%;
-    padding: 12px;
-    background-color: #1f2633;
-    border: 2px solid #4a5568;
-    color: #fff;
-    border-radius: 8px;
-    font-size: 1.05rem;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-}
-
-.uc-select:focus {
-    border-color: #ffb703;
-}
-
-.buy-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(90deg, #ffb703 0%, #dd9a00 100%);
-    border: none;
-    color: #000;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.buy-btn:hover {
-    background: linear-gradient(90deg, #ffd053 0%, #ffb703 100%);
-}
-
-/* النافذة المنبثقة */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 1000;
-}
-
-.overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal {
-    background-color: #1a202c;
-    border: 2px solid #ffb703;
-    border-radius: 16px;
-    padding: 35px;
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.overlay.active .modal {
-    transform: scale(1);
-}
-
-.modal h3 {
-    color: #ffb703;
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-}
-
-.modal-instruction {
-    font-size: 0.95rem;
-    color: #cbd5e0;
-    margin-bottom: 20px;
-}
-
-.code-box {
-    background-color: #0d1117;
-    border: 1px dashed #4a5568;
-    padding: 20px;
-    border-radius: 8px;
-    color: #63b3ed;
-    font-family: monospace;
-    font-size: 1.1rem;
-    direction: ltr;
-    white-space: pre-line;
-    margin-bottom: 25px;
-    user-select: all;
-    border-left: 4px solid #3182ce;
-}
-
-.whatsapp-section {
-    background-color: rgba(72, 187, 120, 0.1);
-    border: 1px solid #48bb78;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-}
-
-.whatsapp-section span {
-    font-size: 0.9rem;
-    color: #a0aec0;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.phone-number {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #48bb78;
-    letter-spacing: 2px;
-}
-
-.close-btn {
-    padding: 10px 25px;
-    background-color: #4a5568;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.close-btn:hover {
-    background-color: #718096;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #718096;
-    font-size: 0.9rem;
-    background-color: #0f1319;
-    margin-top: 60px;
-    border-top: 1px solid #1a202c;
+function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('active');
 }
