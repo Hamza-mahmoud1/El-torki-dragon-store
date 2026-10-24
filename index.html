@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة شحن شدات ببجي العالمية</title>
+    <title>EL TORKI DRAGON STORE - شحن شدات ببجي</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <div class="logo">PUBG UC STORE</div>
+        <div class="logo">EL TORKI DRAGON STORE</div>
         <div class="tagline">المنصة الأسرع والأكثر أماناً لشحن الشدات</div>
     </header>
 
@@ -20,7 +20,7 @@
         
         <!-- دليل المستخدم (الكتالوج) -->
         <section class="instructions-card">
-            <h2>كتالوج خطوات الشراء والدعم</h2>
+            <h2>كتالوج خطوات الشراء والدعم في متجر التركي دراجون</h2>
             <div class="steps-grid">
                 <div class="step">
                     <span class="step-number">1</span>
@@ -30,17 +30,17 @@
                     <span class="step-number">2</span>
                     <p>اضغط على زر "تأكيد الطلب وشراء الآن".</p>
                 </div>
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <p>سيظهر لك كود فريد يحتوي على تفاصيل طلبك مع رقم الواتساب المخصص.</p>
+                <div class="step animate-warning">
+                    <span class="step-number" style="background-color: #e53e3e;">3</span>
+                    <p>سيظهر لك كود الشراء. <strong style="color: #fc8181;">تنبيه فاجر:</strong> لو أغلقت شاشة الكود قبل نسخه وإرساله، ضاعت عليك حصة اليوم تماماً ولن تتمكن من الشراء مجدداً إلا غداً!</p>
                 </div>
                 <div class="step">
                     <span class="step-number">4</span>
-                    <p>انسخ الكود بالكامل وأرسله إلى رقم الواتساب لإنهاء المعاملة وتوصيل الشدات فوراً.</p>
+                    <p>انسخ الكود فوراً وأرسله إلى رقم الواتساب الموضح لإتمام عملية الشحن تلقائياً.</p>
                 </div>
             </div>
             <div class="notice-bar">
-                تنبيه هام: مسموح بإجراء عملية شراء واحدة فقط يومياً (من 60 إلى 660 شدة) لضمان سرعة التوصيل لجميع العملاء.
+                تنبيه هام من إدارة المتجر: مسموح بإجراء عملية شراء واحدة فقط يومياً (من 60 إلى 660 شدة) لضمان سرعة التوصيل لجميع العملاء.
             </div>
         </section>
 
@@ -56,7 +56,7 @@
                 <div class="options-group">
                     <label>اختر كمية الشدات:</label>
                     <select id="volt-select" class="uc-select">
-                        <option value="60" data-price="37">60 UC بسعر 37 جيه</option>
+                        <option value="60" data-price="37">60 UC بسعر 37 جنيه</option>
                         <option value="120" data-price="75">120 UC بسعر 75 جنيه</option>
                         <option value="180" data-price="112">180 UC بسعر 112 جنيه</option>
                         <option value="240" data-price="150">240 UC بسعر 150 جنيه</option>
@@ -104,24 +104,26 @@
     <!-- النافذة المنبثقة لظهور الكود وتفاصيل الطلب -->
     <div id="modal-overlay" class="overlay">
         <div class="modal">
-            <h3>تم إنشاء كود طلبك بنجاح! 🎉</h3>
-            <p class="modal-instruction">قم بنسخ الكود المظلل بالأسفل وإرساله مباشرة إلى رقم الواتساب الموضح للتواصل وإتمام الشحن.</p>
+            <h3 style="color: #fc8181;">⚠️ تحذير هام جداً قبل الإغلاق! ⚠️</h3>
+            <p class="modal-instruction" style="color: #fff; font-weight: bold; background-color: rgba(229, 62, 62, 0.2); padding: 10px; border-radius: 6px;">
+                انسخ الكود بالأسفل أولاً! إذا أغلقت هذه الشاشة الآن، ستضيع عليك حصتك اليومية فوراً ولن تتمكن من طلب كود آخر حتى غداً.
+            </p>
             
             <div class="code-box" id="generated-code">
                 <!-- الكود يظهر هنا عبر الجافا سكريبت -->
             </div>
 
             <div class="whatsapp-section">
-                <span>رقم الواتساب المباشر للتواصل:</span>
+                <span>رقم الواتساب المباشر لإرسال الكود:</span>
                 <div class="phone-number">01029389947</div>
             </div>
 
-            <button class="close-btn" onclick="closeModal()">إغلاق النافذة</button>
+            <button class="close-btn" onclick="closeModal()" style="background-color: #e53e3e;">إغلاق الشاشة (أنا نسخت الكود بالفعل)</button>
         </div>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة للمنصة العربية لشحن الشدات © 2026</p>
+        <p>جميع الحقوق محفوظة لـ EL TORKI DRAGON STORE © 2026</p>
     </footer>
 
     <script src="script.js"></script>
