@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة شحن شدات ببجي العالمية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">PUBG UC STORE</div>
+        <div class="tagline">المنصة الأسرع والأكثر أماناً لشحن الشدات</div>
+    </header>
+
+    <main class="container">
+        
+        <!-- دليل المستخدم (الكتالوج) -->
+        <section class="instructions-card">
+            <h2>كتالوج خطوات الشراء والدعم</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <p>اختر الباقة والكمية المناسبة لك من الأسفل.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <p>اضغط على زر "تأكيد الطلب وشراء الآن".</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <p>سيظهر لك كود فريد يحتوي على تفاصيل طلبك مع رقم الواتساب المخصص.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <p>انسخ الكود بالكامل وأرسله إلى رقم الواتساب لإنهاء المعاملة وتوصيل الشدات فوراً.</p>
+                </div>
+            </div>
+            <div class="notice-bar">
+                تنبيه هام: مسموح بإجراء عملية شراء واحدة فقط يومياً (من 60 إلى 660 شدة) لضمان سرعة التوصيل لجميع العملاء.
+            </div>
+        </section>
+
+        <!-- باقات الشحن -->
+        <h2 class="section-title">باقات الشدات المتاحة اليوم</h2>
+        <div class="packages-container">
+            
+            <!-- باقة Volt UC -->
+            <div class="package-card volt">
+                <div class="badge">الأسرع</div>
+                <h3>باقة Volt UC</h3>
+                <p class="delivery-time">مدة الوصول: 5 دقائق إلى 15 دقيقة</p>
+                <div class="options-group">
+                    <label>اختر كمية الشدات:</label>
+                    <select id="volt-select" class="uc-select">
+                        <option value="60" data-price="37">60 UC بسعر 37 جيه</option>
+                        <option value="120" data-price="75">120 UC بسعر 75 جنيه</option>
+                        <option value="180" data-price="112">180 UC بسعر 112 جنيه</option>
+                        <option value="240" data-price="150">240 UC بسعر 150 جنيه</option>
+                    </select>
+                </div>
+                <button class="buy-btn" onclick="processPurchase('volt-select')">شراء الآن</button>
+            </div>
+
+            <!-- باقة Fazzer UC -->
+            <div class="package-card fazzer">
+                <div class="badge">الأكثر طلباً</div>
+                <h3>باقة Fazzer UC</h3>
+                <p class="delivery-time">مدة الوصول: 15 دقيقة إلى 25 دقيقة</p>
+                <div class="options-group">
+                    <label>اختر كمية الشدات:</label>
+                    <select id="fazzer-select" class="uc-select">
+                        <option value="300" data-price="190">300 UC بسعر 190 جنيه</option>
+                        <option value="360" data-price="230">360 UC بسعر 230 جنيه</option>
+                    </select>
+                </div>
+                <button class="buy-btn" onclick="processPurchase('fazzer-select')">شراء الآن</button>
+            </div>
+
+            <!-- باقة Dragon UC -->
+            <div class="package-card dragon">
+                <div class="badge">العرض الأقوى</div>
+                <h3>باقة Dragon UC</h3>
+                <p class="delivery-time">مدة الوصول: 25 دقيقة إلى 35 دقيقة فقط!</p>
+                <div class="options-group">
+                    <label>اختر كمية الشدات:</label>
+                    <select id="dragon-select" class="uc-select">
+                        <option value="420" data-price="275">420 UC بسعر 275 جنيه</option>
+                        <option value="480" data-price="310">480 UC بسعر 310 جنيه</option>
+                        <option value="540" data-price="350">540 UC بسعر 350 جنيه</option>
+                        <option value="600" data-price="400">600 UC بسعر 400 جنيه</option>
+                        <option value="660" data-price="440">660 UC بسعر 440 جنيه</option>
+                    </select>
+                </div>
+                <button class="buy-btn" onclick="processPurchase('dragon-select')">شراء الآن</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- النافذة المنبثقة لظهور الكود وتفاصيل الطلب -->
+    <div id="modal-overlay" class="overlay">
+        <div class="modal">
+            <h3>تم إنشاء كود طلبك بنجاح! 🎉</h3>
+            <p class="modal-instruction">قم بنسخ الكود المظلل بالأسفل وإرساله مباشرة إلى رقم الواتساب الموضح للتواصل وإتمام الشحن.</p>
+            
+            <div class="code-box" id="generated-code">
+                <!-- الكود يظهر هنا عبر الجافا سكريبت -->
+            </div>
+
+            <div class="whatsapp-section">
+                <span>رقم الواتساب المباشر للتواصل:</span>
+                <div class="phone-number">01029389947</div>
+            </div>
+
+            <button class="close-btn" onclick="closeModal()">إغلاق النافذة</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة للمنصة العربية لشحن الشدات © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
