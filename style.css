@@ -100,6 +100,17 @@ header {
     text-align: center;
 }
 
+@keyframes pulse-warning {
+    0% { border-color: #3182ce; }
+    50% { border-color: #e53e3e; box-shadow: 0 0 10px rgba(229, 62, 62, 0.5); }
+    100% { border-color: #3182ce; }
+}
+
+.animate-warning {
+    animation: pulse-warning 2s infinite;
+    border-top: 3px solid #e53e3e !important;
+}
+
 .section-title {
     text-align: center;
     margin: 50px 0 30px 0;
@@ -302,6 +313,7 @@ header {
     border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .close-btn:hover {
